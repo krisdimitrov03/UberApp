@@ -127,6 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\services\OrderManager.cpp" />
+    <ClCompile Include="src\models\Address.cpp" />
+    <ClCompile Include="src\models\Order.cpp" />
     <ClCompile Include="src\helper\Sha256.cpp" />
     <ClCompile Include="src\models\identity\Driver.cpp" />
     <ClCompile Include="include\models\identity\Driver.h" />
@@ -141,6 +144,8 @@
     <ClCompile Include="src\helper\String.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\helper\Point.h" />
+    <ClInclude Include="include\models\Address.h" />
     <ClInclude Include="include\helper\IdFactory.h" />
     <ClInclude Include="include\helper\interfaces\IFileOperatable.h" />
     <ClInclude Include="include\helper\List.hpp" />
@@ -154,6 +159,8 @@
     <ClInclude Include="include\services\UserManager.h" />
     <ClInclude Include="include\helper\String.h" />
     <ClInclude Include="include\services\Validator.h" />
+    <ClInclude Include="include\models\Order.h" />
+    <ClInclude Include="include\services\OrderManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

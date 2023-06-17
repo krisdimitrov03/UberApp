@@ -85,6 +85,14 @@ String::~String()
 	free();
 }
 
+void String::writeToBinaryFile(std::ofstream& file) const
+{
+}
+
+void String::readFromBinaryFile(std::ifstream& file)
+{
+}
+
 bool String::isSso() const
 {
 	return (ssoData[String::SSO_MAX_SIZE] & (1 << 7)) == 0;

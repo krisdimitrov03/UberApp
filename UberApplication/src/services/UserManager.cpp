@@ -114,6 +114,11 @@ List<Driver>& UserManager::getDrivers()
 	return drivers;
 }
 
+List<size_t> UserManager::getSortedDriversIndexes(const Point& coordinates)
+{
+	return List<size_t>();
+}
+
 UserType UserManager::getCurrentUserType() const
 {
 	return currentUser.type;
@@ -137,6 +142,11 @@ bool UserManager::getCurrentUserIsInOrder() const
 bool UserManager::getCurrentUserIsLoggedIn() const
 {
 	return currentUser.isLogged;
+}
+
+void UserManager::setCurrentUserIsInOrder(bool _data)
+{
+	currentUser.isInOrder = _data;
 }
 
 void UserManager::writeToBinaryFile(std::ofstream& file) const

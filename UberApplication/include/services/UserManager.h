@@ -3,6 +3,7 @@
 #include "../models/identity/Driver.h"
 #include "../helper/List.hpp"
 #include "../models/identity/UserType.h"
+#include "../helper/Point.h"
 
 class UserManager : public IFileOperatable
 {
@@ -41,12 +42,15 @@ public:
 
 	List<Client>& getClients();
 	List<Driver>& getDrivers();
+	List<size_t> getSortedDriversIndexes(const Point& coordinates);
 
 	UserType getCurrentUserType() const;
 	const String& getCurrentUserName() const;
 	const String& getCurrentUserId() const;
 	bool getCurrentUserIsInOrder() const;
 	bool getCurrentUserIsLoggedIn() const;
+
+	void setCurrentUserIsInOrder(bool _data);
 
 	void writeToBinaryFile(std::ofstream& file) const override;
 	void readFromBinaryFile(std::ifstream& file) override;

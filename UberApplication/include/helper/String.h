@@ -2,8 +2,9 @@
 
 #pragma once
 #include <iostream>
+#include "interfaces/IFileOperatable.h"
 
-class String
+class String : IFileOperatable
 {
 	static const short SSO_MAX_SIZE = sizeof(char*) + sizeof(size_t) - 1;
 
@@ -47,6 +48,9 @@ public:
 	~String();
 
 	friend String operator+(const String& lhs, const String& rhs);
+
+	void writeToBinaryFile(std::ofstream& file) const override;
+	void readFromBinaryFile(std::ifstream& file) override;
 };
 
 std::ostream& operator<<(std::ostream& os, const String& obj);

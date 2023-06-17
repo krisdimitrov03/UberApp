@@ -34,7 +34,10 @@ inline void Optional<T>::free()
 template<typename T>
 inline void Optional<T>::copyFrom(const Optional& other)
 {
-	ptr = new T(*other.ptr);
+	if (!other.hasValue())
+		ptr = nullptr;
+	else
+		ptr = new T(*other.ptr);
 }
 
 template<typename T>
