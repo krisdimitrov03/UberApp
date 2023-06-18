@@ -18,29 +18,37 @@ void OrderManager::makeOrder(const Address& _address, const Address& _destinatio
 	if (UserManager::getInstance().getCurrentUserIsInOrder())
 		throw std::runtime_error("User already ordered!");
 
+	const String& clientId = UserManager::getInstance()
+		.getCurrentUserId();
+
 	Order current(
 		_address,
 		_destination,
 		_passengersCount,
-		UserManager::getInstance()
-		.getCurrentUserId()
+		clientId
 	);
 
-	orders.add(std::move(current));
+	orders.add(current);
 	UserManager::getInstance()
 		.setCurrentUserIsInOrder(true);
+
+	UserManager::getInstance()
+		.getClientById(clientId)
+		.setIsInOrder(true);
 
 	//send messageToSortedDrivers
 	List<size_t> indexes = UserManager::getInstance()
 		.getSortedDriversIndexes(_address.getCoordinates());
 
-	//OrderMessageDTO message = ...;
-	//
-	//for (size_t i = 0; i < indexes.length(); i++)
-	//{
-	//	UserManager::getInstance()
-	//		.getDrivers()[indexes[i]].addMessage(message);
-	//}
+	for (size_t i = 0; i < indexes.length(); i++)
+	{
+		UserManager::getInstance()
+			.getDrivers()[indexes[i]]
+			.addMessage(
+				std::move(current),
+				UserManager::getInstance()
+				.getCurrentUserName());
+	}
 }
 
 void OrderManager::writeToBinaryFile(std::ofstream& file) const

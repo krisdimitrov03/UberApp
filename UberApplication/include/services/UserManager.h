@@ -3,7 +3,6 @@
 #include "../models/identity/Driver.h"
 #include "../helper/List.hpp"
 #include "../models/identity/UserType.h"
-#include "../helper/Point.h"
 
 class UserManager : public IFileOperatable
 {
@@ -40,8 +39,14 @@ public:
 
 	void logoutUser();
 
+	void changeAddress(const String& name, const Point& coordinates);
+
 	List<Client>& getClients();
+	Client& getClientById(const String& id);
+
 	List<Driver>& getDrivers();
+	Driver& getDriverById(const String& id);
+
 	List<size_t> getSortedDriversIndexes(const Point& coordinates);
 
 	UserType getCurrentUserType() const;

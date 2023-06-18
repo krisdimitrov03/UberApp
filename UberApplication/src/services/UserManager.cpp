@@ -104,9 +104,31 @@ void UserManager::logoutUser()
 	currentUser.isInOrder = false;
 }
 
+void UserManager::changeAddress(const String& name, const Point& coordinates)
+{
+	const String& driverId = UserManager::getInstance()
+		.getCurrentUserId();
+
+	Address address(name, coordinates);
+
+	UserManager::getInstance()
+		.getDriverById(driverId)
+		.setAddress(std::move(address));
+}
+
 List<Client>& UserManager::getClients()
 {
 	return clients;
+}
+
+Client& UserManager::getClientById(const String& id)
+{
+	for (size_t i = 0; i < clients.length(); i++)
+		if (clients[i].getId() == id)
+			return clients[i];
+
+	Client res;
+	return res;
 }
 
 List<Driver>& UserManager::getDrivers()
@@ -114,9 +136,44 @@ List<Driver>& UserManager::getDrivers()
 	return drivers;
 }
 
+Driver& UserManager::getDriverById(const String& id)
+{
+	for (size_t i = 0; i < drivers.length(); i++)
+		if (drivers[i].getId() == id)
+			return drivers[i];
+
+	Driver res;
+	return res;
+}
+
 List<size_t> UserManager::getSortedDriversIndexes(const Point& coordinates)
 {
-	return List<size_t>();
+	List<size_t> result;
+
+	bool isAdded = true;
+	while (result.length() < drivers.length()) {
+		size_t minIndex = 0;
+
+		for (size_t i = 0; i < drivers.length(); i++)
+		{
+			if (result.contains(i))
+				continue;
+
+			if (drivers.length() - result.length() == 1)
+				result.add(i);
+
+			double lhs = drivers[i].getDistanceTo(coordinates);
+			double rhs = drivers[minIndex].getDistanceTo(coordinates);
+
+			if (lhs < rhs)
+				minIndex = i;
+		}
+
+		if (!result.contains(minIndex))
+			result.add(minIndex);
+	}
+
+	return result;
 }
 
 UserType UserManager::getCurrentUserType() const

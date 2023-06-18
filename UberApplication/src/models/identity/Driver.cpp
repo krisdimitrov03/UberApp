@@ -22,6 +22,52 @@ const String& Driver::getPhoneNumber() const
 	return phoneNumber;
 }
 
+const Point& Driver::getCoordinates() const
+{
+	return address.getCoordinates();
+}
+
+const Address& Driver::getAddress() const
+{
+	return address;
+}
+
+void Driver::setAddress(Address&& newAddress)
+{
+	address = std::move(newAddress);
+}
+
+void Driver::addMessage(Order&& data, const String& clientName)
+{
+	OrderMessageDto message = {
+		data.getId(),
+		clientName,
+		data.getStart().getName(),
+		data.getStart().getCoordinates(),
+		data.getDestination().getName(),
+		data.getDestination().getCoordinates()
+	};
+
+	messages.add(std::move(message));
+}
+
+void Driver::deleteMessage(const String& orderId)
+{
+	for (size_t i = 0; i < messages.length(); i++)
+		if (messages[i].orderId == orderId)
+			messages.remove(i);
+}
+
+double Driver::getDistanceTo(const Point& point)
+{
+	return point.getDistanceTo(address.getCoordinates());
+}
+
+const List<OrderMessageDto>& Driver::getMessages() const
+{
+	return messages;
+}
+
 void Driver::writeToBinaryFile(std::ofstream& file) const
 {
 }

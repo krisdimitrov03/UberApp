@@ -11,6 +11,7 @@ protected:
 	String lastName;
 	String passwordHash;
 	double account = 0.00;
+	bool isInOrder = false;
 
 public:
 	User() = default;
@@ -22,6 +23,9 @@ public:
 	const String& getLastName() const;
 	const String& getPasswordHash() const;
 	double getAccount() const;
+	bool getIsInOrder() const;
+
+	void setIsInOrder(bool _data);
 
 	virtual void writeToBinaryFile(std::ofstream& file) const override;
 	virtual void readFromBinaryFile(std::ifstream& file) override;

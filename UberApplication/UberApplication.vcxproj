@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\helper\Point.cpp" />
     <ClCompile Include="src\services\OrderManager.cpp" />
     <ClCompile Include="src\models\Address.cpp" />
     <ClCompile Include="src\models\Order.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="include\helper\Optional.hpp" />
     <ClInclude Include="include\helper\Random.h" />
     <ClInclude Include="include\helper\Sha256.h" />
+    <ClInclude Include="include\models\dto\OrderMessageDto.h" />
     <ClInclude Include="include\models\identity\Client.h" />
     <ClInclude Include="include\models\identity\User.h" />
     <ClInclude Include="include\models\identity\UserType.h" />

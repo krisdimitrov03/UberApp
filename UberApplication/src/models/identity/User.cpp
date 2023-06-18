@@ -39,6 +39,16 @@ double User::getAccount() const
 	return account;
 }
 
+bool User::getIsInOrder() const
+{
+	return isInOrder;
+}
+
+void User::setIsInOrder(bool _data)
+{
+	isInOrder = _data;
+}
+
 void User::writeToBinaryFile(std::ofstream& file) const
 {
 }

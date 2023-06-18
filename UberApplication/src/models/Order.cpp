@@ -1,8 +1,11 @@
 #include "../../include/models/Order.h"
+#include "../../include/helper/IdFactory.h"
 
 Order::Order(const Address& _start, const Address& _dest, unsigned _passengersCount, const String& _clientId)
 	: start(_start), destination(_dest), passengersCount(_passengersCount), clientId(_clientId)
 {
+	id = IdFactory::getInstance()
+		.create();
 }
 
 const String& Order::getId() const
