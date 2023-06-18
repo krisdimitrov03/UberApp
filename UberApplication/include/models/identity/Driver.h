@@ -10,6 +10,7 @@ class Driver : public User
 	String phoneNumber;
 	Address address;
 	List<OrderMessageDto> messages;
+	double rating = 0.00;
 
 public:
 	Driver() = default;
@@ -24,9 +25,11 @@ public:
 	const String& getPhoneNumber() const;
 	const Point& getCoordinates() const;
 	const Address& getAddress() const;
+	double getRating() const;
 
 	void setAddress(Address&& newAddress);
 
+	void rate(double _rating);
 	void addMessage(Order&& data, const String& clientName);
 	void deleteMessage(const String& orderId);
 

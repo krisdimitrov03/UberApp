@@ -12,6 +12,7 @@ class Order : public IFileOperatable
 	String clientId;
 	String driverId;
 	unsigned minutes = 0;
+	double money = 0.00;
 
 public:
 	Order() = default;
@@ -29,10 +30,12 @@ public:
 	const Address& getDestination() const;
 	bool getFinished() const;
 	unsigned getMinutes() const;
+	double getMoney() const;
 
 	void setDriverId(const String& _id);
 	void setFinished(bool _data);
 	void setMinutes(unsigned _minutes);
+	void setMoney(double _amount);
 
 	void writeToBinaryFile(std::ofstream& file) const override;
 	void readFromBinaryFile(std::ifstream& file) override;

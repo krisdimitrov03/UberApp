@@ -49,6 +49,25 @@ void User::setIsInOrder(bool _data)
 	isInOrder = _data;
 }
 
+void User::addMoney(double amount)
+{
+	if (amount <= 0)
+		throw std::invalid_argument("Amount cannot be 0 or less.");
+
+	account += amount;
+}
+
+void User::removeMoney(double amount)
+{
+	if (amount <= 0)
+		throw std::invalid_argument("Amount cannot be 0 or less.");
+
+	if(amount > account)
+		throw std::exception("Not enough money.");
+
+	account -= amount;
+}
+
 void User::writeToBinaryFile(std::ofstream& file) const
 {
 }

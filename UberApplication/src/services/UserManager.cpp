@@ -116,6 +116,21 @@ void UserManager::changeAddress(const String& name, const Point& coordinates)
 		.setAddress(std::move(address));
 }
 
+void UserManager::addMoney(double amount)
+{
+	getClientById(currentUser.id).
+}
+
+void UserManager::rateDriver(const String& driverName, double rating)
+{
+	for (size_t i = 0; i < drivers.length(); i++)
+	{
+		String name = drivers[i].getFirstName() + " " + drivers[i].getLastName();
+		if (name == driverName)
+			drivers[i].rate(rating);
+	}
+}
+
 List<Client>& UserManager::getClients()
 {
 	return clients;

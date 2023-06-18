@@ -119,5 +119,8 @@
     <ClInclude Include="include\models\dto\OrderMessageDto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\models\dto\CheckOrderDto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -35,6 +35,8 @@ void mockTest()
 	Address dest1("National Palace of Culture", { 523,412 });
 	OrderManager::getInstance().makeOrder(start1, dest1, 1);
 
+	auto orderStatus = OrderManager::getInstance().checkOrder();
+
 	UserManager::getInstance().logoutUser();
 
 	//login and order from <lucas_perez>
@@ -58,6 +60,22 @@ void mockTest()
 		std::cout << messages[i].clientName << " ordered from "
 			<< messages[i].start << " to " << messages[i].destination << std::endl;
 	}
+
+	UserManager::getInstance().logoutUser();
+
+	//login and cancel order from <kris_dmt>
+	UserManager::getInstance().loginUser("kris_dmt", "P@rola123");
+
+	Optional<Order> order = OrderManager::getInstance().getOrders().find(
+		[&](const Order& el)
+		{
+			return el.getClientId() == UserManager::getInstance().getCurrentUserId();
+		}
+	);
+
+	OrderManager::getInstance().cancelOrder(order.getData().getId());
+
+	UserManager::getInstance().logoutUser();
 }
 
 int main()

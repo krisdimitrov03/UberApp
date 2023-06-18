@@ -153,6 +153,7 @@
     <ClInclude Include="include\helper\Optional.hpp" />
     <ClInclude Include="include\helper\Random.h" />
     <ClInclude Include="include\helper\Sha256.h" />
+    <ClInclude Include="include\models\dto\CheckOrderDto.h" />
     <ClInclude Include="include\models\dto\OrderMessageDto.h" />
     <ClInclude Include="include\models\identity\Client.h" />
     <ClInclude Include="include\models\identity\User.h" />

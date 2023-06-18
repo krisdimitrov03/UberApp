@@ -41,6 +41,10 @@ public:
 
 	void changeAddress(const String& name, const Point& coordinates);
 
+	void addMoney(double amount);
+
+	void rateDriver(const String& driverName, double rating);
+
 	List<Client>& getClients();
 	Client& getClientById(const String& id);
 

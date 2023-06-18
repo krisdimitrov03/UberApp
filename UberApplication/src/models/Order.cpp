@@ -43,6 +43,11 @@ unsigned Order::getMinutes() const
 	return minutes;
 }
 
+double Order::getMoney() const
+{
+	return money;
+}
+
 void Order::setDriverId(const String& _id)
 {
 	if (_id == "")
@@ -59,6 +64,14 @@ void Order::setFinished(bool _data)
 void Order::setMinutes(unsigned _minutes)
 {
 	minutes = _minutes;
+}
+
+void Order::setMoney(double _amount)
+{
+	if (_amount <= 0)
+		throw std::invalid_argument("Amount cannot be 0 or less.");
+
+	money = _amount;
 }
 
 void Order::writeToBinaryFile(std::ofstream& file) const

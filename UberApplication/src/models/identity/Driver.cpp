@@ -27,6 +27,11 @@ const Point& Driver::getCoordinates() const
 	return address.getCoordinates();
 }
 
+double Driver::getRating() const
+{
+	return rating;
+}
+
 const Address& Driver::getAddress() const
 {
 	return address;
@@ -56,6 +61,17 @@ void Driver::deleteMessage(const String& orderId)
 	for (size_t i = 0; i < messages.length(); i++)
 		if (messages[i].orderId == orderId)
 			messages.remove(i);
+}
+
+void Driver::rate(double _rating)
+{
+	if (_rating < 0)
+		throw std::invalid_argument("Rating cannot be less than 0.");
+
+	if (rating == 0.00)
+		rating += _rating;
+	else
+		rating = (rating + _rating) / 2;
 }
 
 double Driver::getDistanceTo(const Point& point)

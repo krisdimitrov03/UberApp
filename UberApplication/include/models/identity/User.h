@@ -27,6 +27,9 @@ public:
 
 	void setIsInOrder(bool _data);
 
+	void addMoney(double amount);
+	void removeMoney(double amount);
+
 	virtual void writeToBinaryFile(std::ofstream& file) const override;
 	virtual void readFromBinaryFile(std::ifstream& file) override;
 };
