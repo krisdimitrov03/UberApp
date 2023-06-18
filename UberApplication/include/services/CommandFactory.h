@@ -57,6 +57,6 @@ public:
 
 	CommandBase* createAcceptPaymentCommand(const String& orderId);
 
-	static const CommandFactory& getInstance();
+	static CommandFactory& getInstance();
 };
 

@@ -47,6 +47,8 @@ public:
 
 	~String();
 
+	friend std::istream& operator>>(std::istream& is, String& str);
+
 	friend String operator+(const String& lhs, const String& rhs);
 
 	void writeToBinaryFile(std::ofstream& file) const override;
@@ -54,6 +56,7 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const String& obj);
+std::istream& operator>>(std::istream& is, String& str);
 
 bool operator<(const String& lhs, const String& rhs);
 bool operator<=(const String& lhs, const String& rhs);

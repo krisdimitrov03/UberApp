@@ -9,6 +9,11 @@
 #include "../../include/commands/CancelOrderCommand.h"
 #include "../../include/commands/PayCommand.h"
 #include "../../include/commands/RateCommand.h"
+#include "../../include/commands/ChangeAddressCommand.h"
+#include "../../include/commands/AcceptOrderCommand.h"
+#include "../../include/commands/DeclineOrderCommand.h"
+#include "../../include/commands/FinishOrderCommand.h"
+#include "../../include/commands/AcceptPaymentCommand.h"
 
 CommandFactory CommandFactory::instance;
 
@@ -62,7 +67,32 @@ CommandBase* CommandFactory::createRateCommand(const String& driverName, double 
 	return new RateCommand(driverName, rating);
 }
 
-const CommandFactory& CommandFactory::getInstance()
+CommandBase* CommandFactory::createChangeAddressCommand(const String& name, const Point& coordinates)
+{
+	return new ChangeAddressCommand(name, coordinates);
+}
+
+CommandBase* CommandFactory::createAcceptOrderCommand(const String& orderId)
+{
+	return new AcceptOrderCommand(orderId);
+}
+
+CommandBase* CommandFactory::createDeclineOrderCommand(const String& orderId)
+{
+	return new DeclineOrderCommand(orderId);
+}
+
+CommandBase* CommandFactory::createFinishOrderCommand(const String& orderId)
+{
+	return new FinishOrderCommand(orderId);
+}
+
+CommandBase* CommandFactory::createAcceptPaymentCommand(const String& orderId)
+{
+	return new AcceptPaymentCommand(orderId);
+}
+
+CommandFactory& CommandFactory::getInstance()
 {
 	return instance;
 }

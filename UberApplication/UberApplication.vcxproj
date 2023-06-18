@@ -127,7 +127,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\app\Theme.cpp" />
+    <ClCompile Include="src\commands\ChangeAddressCommand.cpp" />
+    <ClCompile Include="src\commands\AcceptPaymentCommand.cpp" />
+    <ClCompile Include="src\commands\DeclineOrderCommand.cpp" />
+    <ClCompile Include="src\commands\FinishOrderCommand.cpp" />
+    <ClCompile Include="src\commands\AcceptOrderCommand.cpp" />
+    <ClCompile Include="src\commands\RateCommand.cpp" />
+    <ClCompile Include="src\commands\PayCommand.cpp" />
+    <ClCompile Include="src\commands\CancelOrderCommand.cpp" />
+    <ClCompile Include="src\commands\AddMoneyCommand.cpp" />
+    <ClCompile Include="src\commands\CheckMessagesCommand.cpp" />
+    <ClCompile Include="src\commands\CheckOrderCommand.cpp" />
+    <ClCompile Include="src\commands\OrderCommand.cpp" />
+    <ClCompile Include="src\commands\LogoutCommand.cpp" />
+    <ClCompile Include="src\commands\RegisterCommand.cpp" />
+    <ClCompile Include="src\helper\Console.cpp" />
+    <ClCompile Include="src\services\CommandFactory.cpp" />
+    <ClCompile Include="src\commands\LoginCommand.cpp" />
     <ClCompile Include="src\helper\Point.cpp" />
+    <ClCompile Include="src\services\MenuManager.cpp" />
     <ClCompile Include="src\services\OrderManager.cpp" />
     <ClCompile Include="src\models\Address.cpp" />
     <ClCompile Include="src\models\Order.cpp" />
@@ -139,6 +158,7 @@
     <ClCompile Include="src\helper\IdFactory.cpp" />
     <ClCompile Include="src\helper\Random.cpp" />
     <ClCompile Include="src\services\Parser.cpp" />
+    <ClCompile Include="src\services\UIManager.cpp" />
     <ClCompile Include="src\services\UserManager.cpp" />
     <ClCompile Include="src\services\Validator.cpp" />
     <ClCompile Include="Startup.cpp" />
@@ -146,6 +166,20 @@
     <ClCompile Include="src\app\UberApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\app\Theme.h" />
+    <ClInclude Include="include\app\ThemeOption.h" />
+    <ClInclude Include="include\commands\ChangeAddressCommand.h" />
+    <ClInclude Include="include\commands\AcceptPaymentCommand.h" />
+    <ClInclude Include="include\commands\DeclineOrderCommand.h" />
+    <ClInclude Include="include\commands\FinishOrderCommand.h" />
+    <ClInclude Include="include\commands\AcceptOrderCommand.h" />
+    <ClInclude Include="include\commands\CancelOrderCommand.h" />
+    <ClInclude Include="include\commands\AddMoneyCommand.h" />
+    <ClInclude Include="include\commands\CheckMessagesCommand.h" />
+    <ClInclude Include="include\commands\CheckOrderCommand.h" />
+    <ClInclude Include="include\helper\Console.h" />
+    <ClInclude Include="include\services\CommandFactory.h" />
+    <ClInclude Include="include\commands\CommandBase.h" />
     <ClInclude Include="include\helper\Point.h" />
     <ClInclude Include="include\models\Address.h" />
     <ClInclude Include="include\helper\IdFactory.h" />
@@ -159,13 +193,25 @@
     <ClInclude Include="include\models\identity\Client.h" />
     <ClInclude Include="include\models\identity\User.h" />
     <ClInclude Include="include\models\identity\UserType.h" />
+    <ClInclude Include="include\services\MenuManager.h" />
     <ClInclude Include="include\services\Parser.h" />
+    <ClInclude Include="include\services\UIManager.h" />
     <ClInclude Include="include\services\UserManager.h" />
     <ClInclude Include="include\helper\String.h" />
     <ClInclude Include="include\services\Validator.h" />
     <ClInclude Include="include\models\Order.h" />
     <ClInclude Include="include\services\OrderManager.h" />
     <ClInclude Include="include\app\UberApp.h" />
+    <ClInclude Include="include\commands\LoginCommand.h" />
+    <ClInclude Include="include\commands\RegisterCommand.h" />
+    <ClInclude Include="include\commands\LogoutCommand.h" />
+    <ClInclude Include="include\commands\OrderCommand.h" />
+    <ClInclude Include="include\commands\PayCommand.h" />
+    <ClInclude Include="include\commands\RateCommand.h" />
+    <ClInclude Include="include\ui\Landings.h" />
+    <ClInclude Include="include\ui\Logo.h" />
+    <ClInclude Include="include\ui\Messages.h" />
+    <ClInclude Include="include\ui\Pages.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

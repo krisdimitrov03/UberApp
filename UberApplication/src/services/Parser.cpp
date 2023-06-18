@@ -32,3 +32,17 @@ String Parser::hex(size_t data)
     }
     return answer;
 }
+
+String Parser::intToString(int value)
+{
+    String res;
+
+    while (value != 0) {
+        char arr[2]{ '\0' };
+        arr[0] = (value % 10) + '0';
+        res = arr + res;
+        value /= 10;
+    }
+
+    return res;
+}

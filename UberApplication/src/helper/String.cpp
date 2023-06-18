@@ -187,6 +187,25 @@ std::ostream& operator<<(std::ostream& os, const String& obj)
 	return os << obj.c_str();
 }
 
+std::istream& operator>>(std::istream& is, String& str)
+{
+	char buff[1024];
+	is.getline(buff, 1024);
+	size_t length = strlen(buff);
+	str.free();
+
+	if (length >= sizeof(str.ssoData)) {
+		str._size = length;
+		str._data = new char[length + 1] {'\0'};
+		strcpy(str._data, buff);
+	}
+	else {
+		strcpy(str.ssoData, buff);
+	}
+
+	return is;
+}
+
 String operator+(const String& lhs, const String& rhs)
 {
 	size_t newStrSize = lhs.length() + rhs.length();
