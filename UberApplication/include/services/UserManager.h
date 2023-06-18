@@ -41,6 +41,8 @@ public:
 
 	void changeAddress(const String& name, const Point& coordinates);
 
+	const List<OrderMessageDto>& getMessages() const;
+
 	void addMoney(double amount);
 
 	void rateDriver(const String& driverName, double rating);

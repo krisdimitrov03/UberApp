@@ -87,10 +87,23 @@ String::~String()
 
 void String::writeToBinaryFile(std::ofstream& file) const
 {
+	size_t len = length();
+	file.write((const char*)&len, sizeof(size_t));
+
+	file.write(c_str(), length() * sizeof(char));
 }
 
 void String::readFromBinaryFile(std::ifstream& file)
 {
+	size_t length = 0;
+	file.read((char*)&length, sizeof(size_t));
+
+	char* buff = new char[length + 1] {'\0'};
+	file.read(buff, length * sizeof(char));
+
+	*this = buff;
+
+	delete[] buff;
 }
 
 bool String::isSso() const

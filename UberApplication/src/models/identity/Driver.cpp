@@ -86,8 +86,18 @@ const List<OrderMessageDto>& Driver::getMessages() const
 
 void Driver::writeToBinaryFile(std::ofstream& file) const
 {
+	User::writeToBinaryFile(file);
+	carNumber.writeToBinaryFile(file);
+	phoneNumber.writeToBinaryFile(file);
+	address.writeToBinaryFile(file);
+	file.write((const char*)&rating, sizeof(double));
 }
 
 void Driver::readFromBinaryFile(std::ifstream& file)
 {
+	User::readFromBinaryFile(file);
+	carNumber.readFromBinaryFile(file);
+	phoneNumber.readFromBinaryFile(file);
+	address.readFromBinaryFile(file);
+	file.read((char*)&rating, sizeof(double));
 }

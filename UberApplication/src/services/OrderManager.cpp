@@ -192,10 +192,30 @@ void OrderManager::acceptPayment(const String& orderId)
 		.addMoney(orders[i].getMoney());
 }
 
+void OrderManager::finishAll()
+{
+	for (size_t i = 0; i < orders.length(); i++)
+		orders[i].setFinished(true);
+}
+
 void OrderManager::writeToBinaryFile(std::ofstream& file) const
 {
+	size_t ordersLen = orders.length();
+	file.write((const char*)&ordersLen, sizeof(size_t));
+
+	for (size_t i = 0; i < ordersLen; i++)
+		orders[i].writeToBinaryFile(file);
 }
 
 void OrderManager::readFromBinaryFile(std::ifstream& file)
 {
+	size_t ordersCount = 0;
+	file.read((char*)&ordersCount, sizeof(size_t));
+
+	for (size_t i = 0; i < ordersCount; i++)
+	{
+		Order current;
+		current.readFromBinaryFile(file);
+		orders.add(current);
+	}
 }

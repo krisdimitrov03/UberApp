@@ -28,6 +28,8 @@ public:
 	bool pay(const String& orderId, double amount);
 	void acceptPayment(const String& orderId);
 
+	void finishAll();
+
 	void writeToBinaryFile(std::ofstream& file) const override;
 	void readFromBinaryFile(std::ifstream& file) override;
 };

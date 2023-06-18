@@ -116,9 +116,19 @@ void UserManager::changeAddress(const String& name, const Point& coordinates)
 		.setAddress(std::move(address));
 }
 
+const List<OrderMessageDto>& UserManager::getMessages() const
+{
+	size_t i;
+	for (i = 0; i < drivers.length(); i++)
+		if (drivers[i].getId() == currentUser.id)
+			break;
+
+	return drivers[i].getMessages();
+}
+
 void UserManager::addMoney(double amount)
 {
-	getClientById(currentUser.id).
+	getClientById(currentUser.id).addMoney(amount);
 }
 
 void UserManager::rateDriver(const String& driverName, double rating)
@@ -223,8 +233,37 @@ void UserManager::setCurrentUserIsInOrder(bool _data)
 
 void UserManager::writeToBinaryFile(std::ofstream& file) const
 {
+	size_t clientsLen = clients.length();
+	size_t driversLen = drivers.length();
+
+	file.write((const char*)&clientsLen, sizeof(size_t));
+	for (size_t i = 0; i < clientsLen; i++)
+		clients[i].writeToBinaryFile(file);
+
+	file.write((const char*)&driversLen, sizeof(size_t));
+	for (size_t i = 0; i < driversLen; i++)
+		drivers[i].writeToBinaryFile(file);
 }
 
 void UserManager::readFromBinaryFile(std::ifstream& file)
 {
+	size_t clientsCount = 0;
+	file.read((char*)&clientsCount, sizeof(size_t));
+
+	for (size_t i = 0; i < clientsCount; i++)
+	{
+		Client current;
+		current.readFromBinaryFile(file);
+		clients.add(std::move(current));
+	}
+
+	size_t driversCount = 0;
+	file.read((char*)&driversCount, sizeof(size_t));
+
+	for (size_t i = 0; i < driversCount; i++)
+	{
+		Driver current;
+		current.readFromBinaryFile(file);
+		drivers.add(std::move(current));
+	}
 }

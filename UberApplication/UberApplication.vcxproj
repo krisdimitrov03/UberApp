@@ -143,6 +143,7 @@
     <ClCompile Include="src\services\Validator.cpp" />
     <ClCompile Include="Startup.cpp" />
     <ClCompile Include="src\helper\String.cpp" />
+    <ClCompile Include="src\app\UberApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\helper\Point.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="include\services\Validator.h" />
     <ClInclude Include="include\models\Order.h" />
     <ClInclude Include="include\services\OrderManager.h" />
+    <ClInclude Include="include\app\UberApp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

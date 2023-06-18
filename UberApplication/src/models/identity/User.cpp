@@ -70,10 +70,20 @@ void User::removeMoney(double amount)
 
 void User::writeToBinaryFile(std::ofstream& file) const
 {
+	id.writeToBinaryFile(file);
+	username.writeToBinaryFile(file);
+	firstName.writeToBinaryFile(file);
+	lastName.writeToBinaryFile(file);
+	passwordHash.writeToBinaryFile(file);
 }
 
 void User::readFromBinaryFile(std::ifstream& file)
 {
+	id.readFromBinaryFile(file);
+	username.readFromBinaryFile(file);
+	firstName.readFromBinaryFile(file);
+	lastName.readFromBinaryFile(file);
+	passwordHash.readFromBinaryFile(file);
 }
 
 bool operator==(const User& lhs, const User& rhs)
