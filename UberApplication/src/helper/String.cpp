@@ -98,7 +98,7 @@ void String::readFromBinaryFile(std::ifstream& file)
 	size_t length = 0;
 	file.read((char*)&length, sizeof(size_t));
 
-	char* buff = new char[length + 1] {'\0'};
+	char* buff = new char[length + 1]{ '\0' };
 	file.read(buff, length * sizeof(char));
 
 	*this = buff;
@@ -157,7 +157,7 @@ String& String::operator+=(const String& other)
 	}
 	else
 	{
-		char* newData = new char[newStrSize + 1] {'\0'};
+		char* newData = new char[newStrSize + 1]{ '\0' };
 
 		strcpy(newData, c_str());
 		strcat(newData, other.c_str());
@@ -192,15 +192,16 @@ std::istream& operator>>(std::istream& is, String& str)
 	char buff[1024];
 	is.getline(buff, 1024);
 	size_t length = strlen(buff);
-	str.free();
+	/*str.free();*/
 
 	if (length >= sizeof(str.ssoData)) {
 		str._size = length;
-		str._data = new char[length + 1] {'\0'};
+		str._data = new char[length + 1]{ '\0' };
 		strcpy(str._data, buff);
 	}
 	else {
 		strcpy(str.ssoData, buff);
+		str[String::SSO_MAX_SIZE] = String::SSO_MAX_SIZE - length;
 	}
 
 	return is;
