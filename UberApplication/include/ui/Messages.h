@@ -19,4 +19,6 @@ namespace error {
 
 namespace success {
 	const char REGISTERED[] = "Account created successfully.";
+	const char ORDER_SUCCESSFUL[] = "Order made. Searching for a taxi...";
+	const char DEPOSIT_SUCCESSFUL[] = "Deposit successful.";
 }

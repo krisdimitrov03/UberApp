@@ -37,28 +37,18 @@ void RegisterCommand::execute() const
 	switch (result) {
 	case 0:
 		UIManager::printSuccessMessage(success::REGISTERED);
-		Console::writeLine("Press <Enter> to continue...");
-		Console::readKey();
 		break;
 	case -1:
 		UIManager::printErrorMessage(error::INVALID_USERNAME);
-		Console::writeLine("Press <Enter> to continue...");
-		Console::readKey();
 		break;
 	case -2:
 		UIManager::printErrorMessage(error::INVALID_F_NAME);
-		Console::writeLine("Press <Enter> to continue...");
-		Console::readKey();
 		break;
 	case -3:
 		UIManager::printErrorMessage(error::INVALID_L_NAME);
-		Console::writeLine("Press <Enter> to continue...");
-		Console::readKey();
 		break;
 	case -4:
 		UIManager::printErrorMessage(error::INVALID_PASSWORD);
-		Console::writeLine("Press <Enter> to continue...");
-		Console::readKey();
 		break;
 	}
 }

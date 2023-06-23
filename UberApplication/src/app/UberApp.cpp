@@ -11,12 +11,12 @@ void UberApp::readFromFile()
 {
 	std::ifstream file(globals::DB_FILE_NAME, std::ios::in | std::ios::binary);
 
-	/*if (!file.is_open()) {
+	if (!file.is_open()) {
 		UIManager::printErrorMessage(error::FILE_NOT_OPENNING);
 		return;
 	}
 
-	UIManager::getInstance().getTheme().readFromBinaryFile(file);*/
+	UIManager::getInstance().getTheme().readFromBinaryFile(file);
 
 	UserManager::getInstance().readFromBinaryFile(file);
 	OrderManager::getInstance().readFromBinaryFile(file);
@@ -64,8 +64,15 @@ void UberApp::run()
 			UserManager::getInstance().getCurrentUserIsInOrder()
 		);
 
-		int option = Console::read<int>();
+		char input = Console::read<char>();
 		std::cin.ignore();
+
+		if (input < '0' || input > '9') {
+			UIManager::printErrorMessage(error::INVALID_OPTION_NUMBER);
+			continue;
+		}
+
+		int option = input - '0';
 		bool exit = false;
 
 		switch (UserManager::getInstance().getCurrentUserType()) {

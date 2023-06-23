@@ -81,6 +81,11 @@ void UIManager::printOrderPage()
 	Console::write(ORDER_PAGE);
 }
 
+void UIManager::printAddMoneyPage()
+{
+	Console::write(ADD_MONEY_PAGE);
+}
+
 void UIManager::printOrderDetailsPage(const CheckOrderDto& details) {
 	if (details.driverName == "")
 		printMessage("*", "We are still searching a driver.");
@@ -128,10 +133,38 @@ void UIManager::printErrorMessage(const String& message)
 {
 	Console::writeLine();
 	printMessage("X", message);
+	Console::writeLine("Press <Enter> to continue...");
+	Console::readKey();
 }
 
 void UIManager::printSuccessMessage(const String& message)
 {
 	Console::writeLine();
 	printMessage("V", message);
+	Console::writeLine("Press <Enter> to continue...");
+	Console::readKey();
+}
+
+void UIManager::printOrderMessage(const OrderMessageDto& data, size_t idx)
+{
+	Console::write("   [" + Parser::intToString(idx) + "] ");
+	Console::write(data.clientName);
+	Console::write(" ordered from ");
+	Console::write(data.start + " ");
+	Console::write(
+		"(" +
+		Parser::intToString(data.startCoordinates.x) +
+		", " +
+		Parser::intToString(data.startCoordinates.y) +
+		")"
+	);
+	Console::write(" to ");
+	Console::write(data.destination + " ");
+	Console::writeLine(
+		"(" +
+		Parser::intToString(data.destCoordinates.x) +
+		", " +
+		Parser::intToString(data.destCoordinates.y) +
+		")"
+	);
 }

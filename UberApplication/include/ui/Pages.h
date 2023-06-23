@@ -67,6 +67,27 @@ const char EXIT_VIEW[] = R"(
       `---`
 )";
 
-const char ORDER_PAGE[] = R"(
- 
-)";
+const char ORDER_PAGE[] = 
+R"(   ___          _           
+  / _ \ _ __ __| | ___ _ __ 
+ | | | | '__/ _` |/ _ \ '__|
+ | |_| | | | (_| |  __/ |   
+  \___/|_|  \__,_|\___|_|   
+
+ Enter data in the following format:
+   <current address>
+   <current coordinates>
+   <destination address>
+   <destination coordinates>
+   <passengers count>
+
+ -> )";
+
+const char ADD_MONEY_PAGE[] =
+R"(     _       _     _                                    
+    / \   __| | __| |  _ __ ___   ___  _ __   ___ _   _ 
+   / _ \ / _` |/ _` | | '_ ` _ \ / _ \| '_ \ / _ \ | | |
+  / ___ \ (_| | (_| | | | | | | | (_) | | | |  __/ |_| |
+ /_/   \_\__,_|\__,_| |_| |_| |_|\___/|_| |_|\___|\__, |
+                                                  |___/ 
+ Enter amount you want to deposit (€) -> )";

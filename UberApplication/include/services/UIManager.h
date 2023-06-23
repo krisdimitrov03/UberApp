@@ -3,6 +3,7 @@
 #include "../models/identity/UserType.h"
 #include "../app/Theme.h"
 #include "../models/dto/CheckOrderDto.h"
+#include "../models/dto/OrderMessageDto.h"
 
 class UIManager
 {
@@ -28,6 +29,8 @@ public:
 
 	static void printOrderPage();
 
+	static void printAddMoneyPage();
+
 	static void printOrderDetailsPage(const CheckOrderDto& details);
 
 	static void printTypePartial();
@@ -41,4 +44,6 @@ public:
 	static void printErrorMessage(const String& message);
 
 	static void printSuccessMessage(const String& message);
+
+	static void printOrderMessage(const OrderMessageDto& data, size_t idx);
 };

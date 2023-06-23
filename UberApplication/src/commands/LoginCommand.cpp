@@ -16,7 +16,5 @@ void LoginCommand::execute() const
 
 	if (!result) {
 		UIManager::printErrorMessage(error::INVALID_LOGIN);
-		Console::writeLine("Press <Enter> to continue...");
-		Console::readKey();
 	}
 }

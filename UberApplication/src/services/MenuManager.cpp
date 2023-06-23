@@ -76,23 +76,44 @@ void MenuManager::runNotOrderedClientMenu(int option, bool& exit)
 		int sX = 0, sY = 0, dX = 0, dY = 0;
 
 		Console::read(startName);
+		Console::write(" -> ");
 		sX = Console::read<int>();
 		sY = Console::read<int>();
 		std::cin.ignore();
+		Console::write("Additional info? (Y/N):");
+		char res = Console::read<char>();
+		std::cin.ignore();
+		switch (res) {
+		case 'Y':
+		case 'y':
+			Console::write("Add info -> ");
+			Console::read(startAddInfo);
+			break;
+		}
 
+		Console::write(" -> ");
 		Console::read(destName);
-		//additional info "if"
+		Console::write(" -> ");
 		dX = Console::read<int>();
 		dY = Console::read<int>();
 		std::cin.ignore();
+		Console::write("Additional info? (Y/N):");
+		res = Console::read<char>();
+		std::cin.ignore();
+		switch (res) {
+		case 'Y':
+		case 'y':
+			Console::write("Add info -> ");
+			Console::read(startAddInfo);
+			break;
+		}
 
+		Console::write(" -> ");
 		int passengersCount = Console::read<int>();
 		std::cin.ignore();
 
 		if (!Validator::validatePassengersCount(passengersCount)) {
 			UIManager::printErrorMessage(error::INVALID_PASSENGERS_COUNT);
-			Console::writeLine("Press <Enter> to continue...");
-			Console::readKey();
 			return;
 		}
 
@@ -109,8 +130,11 @@ void MenuManager::runNotOrderedClientMenu(int option, bool& exit)
 		break;
 	}
 	case 2: {
-		
+		Console::clear();
+		UIManager::printAddMoneyPage();
+
 		double amount = Console::read<double>();
+		std::cin.ignore();
 
 		CommandFactory::getInstance()
 			.createAddMoneyCommand(amount)
@@ -127,8 +151,6 @@ void MenuManager::runNotOrderedClientMenu(int option, bool& exit)
 		return;
 	default:
 		UIManager::printErrorMessage(error::INVALID_OPTION_NUMBER);
-		Console::writeLine("Press <Enter> to continue...");
-		Console::readKey();
 		break;
 	}
 }
@@ -227,8 +249,6 @@ void MenuManager::runGuestMenu(int option, bool& exit)
 		break;
 	default:
 		UIManager::printErrorMessage(error::INVALID_OPTION_NUMBER);
-		Console::writeLine("Press <Enter> to continue...");
-		Console::readKey();
 		break;
 	}
 }
