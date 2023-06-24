@@ -39,10 +39,8 @@ const char DRIVER_LANDING[] = R"(
 
    [1] Change address
    [2] Check messages
-   [3] Accept order
-   [4] Decline order
-   [5] Log out
-   [6] Exit
+   [3] Log out
+   [4] Exit
 
  Enter number: )";
 
@@ -50,10 +48,8 @@ const char DRIVER_IN_ORDER_LANDING[] = R"(
  Choose one of the options below:
 
    [1] Change address
-   [2] Check messages
-   [3] Finish order
-   [4] Accept Payment
-   [5] Log out
-   [6] Exit
+   [2] Finish order
+   [3] Log out
+   [4] Exit
 
  Enter number: )";

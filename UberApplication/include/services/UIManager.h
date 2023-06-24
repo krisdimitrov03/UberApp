@@ -31,6 +31,8 @@ public:
 
 	static void printAddMoneyPage();
 
+	static void printCheckMessagesPage();
+
 	static void printOrderDetailsPage(const CheckOrderDto& details);
 
 	static void printTypePartial();

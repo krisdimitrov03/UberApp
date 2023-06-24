@@ -49,7 +49,7 @@ public:
 
 	CommandBase* createChangeAddressCommand(const String& name, const Point& coordinates);
 
-	CommandBase* createAcceptOrderCommand(const String& orderId);
+	CommandBase* createAcceptOrderCommand(const String& orderId, unsigned minutes);
 
 	CommandBase* createDeclineOrderCommand(const String& orderId);
 

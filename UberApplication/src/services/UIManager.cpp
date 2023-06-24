@@ -86,6 +86,11 @@ void UIManager::printAddMoneyPage()
 	Console::write(ADD_MONEY_PAGE);
 }
 
+void UIManager::printCheckMessagesPage()
+{
+	Console::writeLine(CHECK_MESSAGES_PAGE);
+}
+
 void UIManager::printOrderDetailsPage(const CheckOrderDto& details) {
 	if (details.driverName == "")
 		printMessage("*", "We are still searching a driver.");

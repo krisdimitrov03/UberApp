@@ -78,7 +78,7 @@ CheckOrderDto OrderManager::checkOrder() const
 	};
 }
 
-void OrderManager::acceptOrder(const String& id)
+void OrderManager::acceptOrder(const String& id, unsigned minutes)
 {
 	const String& driverId = UserManager::getInstance()
 		.getCurrentUserId();
@@ -88,6 +88,7 @@ void OrderManager::acceptOrder(const String& id)
 		if (orders[i].getId() == id)
 		{
 			orders[i].setDriverId(driverId);
+			orders[i].setMinutes(minutes);
 
 			List<Driver> drivers = UserManager::getInstance()
 				.getDrivers();

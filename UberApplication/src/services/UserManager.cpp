@@ -30,6 +30,7 @@ bool UserManager::loginUser(const String& _username, const String& _password)
 		currentUser.name = client.getData().getFirstName() +
 			" " + client.getData().getLastName();
 		currentUser.type = UserType::Client;
+		currentUser.isInOrder = client.getData().getIsInOrder();
 		return true;
 	}
 	else if (driver.hasValue()) {
@@ -38,6 +39,7 @@ bool UserManager::loginUser(const String& _username, const String& _password)
 		currentUser.name = driver.getData().getFirstName() +
 			" " + driver.getData().getLastName();
 		currentUser.type = UserType::Driver;
+		currentUser.isInOrder = driver.getData().getIsInOrder();
 		return true;
 	}
 

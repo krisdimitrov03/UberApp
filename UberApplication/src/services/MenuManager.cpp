@@ -158,7 +158,16 @@ void MenuManager::runNotOrderedClientMenu(int option, bool& exit)
 void MenuManager::runDriverInOrderMenu(int option, bool& exit)
 {
 	switch (option) {
-	case 6:
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		CommandFactory::getInstance()
+			.createLogoutCommand()
+			->execute();
+		break;
+	case 4:
 		exit = true;
 		return;
 	}
@@ -167,12 +176,22 @@ void MenuManager::runDriverInOrderMenu(int option, bool& exit)
 void MenuManager::runDriverNotInOrderMenu(int option, bool& exit)
 {
 	switch (option) {
+	case 1:
+		break;
 	case 2:
+		Console::clear();
+		UIManager::printCheckMessagesPage();
+
 		CommandFactory::getInstance()
 			.createCheckMessagesCommand()
 			->execute();
 		break;
-	case 6:
+	case 3:
+		CommandFactory::getInstance()
+			.createLogoutCommand()
+			->execute();
+		break;
+	case 4:
 		exit = true;
 		return;
 	}

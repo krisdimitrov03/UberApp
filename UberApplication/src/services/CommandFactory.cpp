@@ -72,9 +72,9 @@ CommandBase* CommandFactory::createChangeAddressCommand(const String& name, cons
 	return new ChangeAddressCommand(name, coordinates);
 }
 
-CommandBase* CommandFactory::createAcceptOrderCommand(const String& orderId)
+CommandBase* CommandFactory::createAcceptOrderCommand(const String& orderId, unsigned minutes)
 {
-	return new AcceptOrderCommand(orderId);
+	return new AcceptOrderCommand(orderId, minutes);
 }
 
 CommandBase* CommandFactory::createDeclineOrderCommand(const String& orderId)

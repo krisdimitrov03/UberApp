@@ -20,7 +20,7 @@ public:
 
 	void makeOrder(const Address& _address, const Address& _destination, unsigned _passengersCount);
 	CheckOrderDto checkOrder() const;
-	void acceptOrder(const String& id);
+	void acceptOrder(const String& id, unsigned minutes);
 	void declineOrder(const String& id);
 	void cancelOrder(const String& id);
 	void finishOrder(const String& id);

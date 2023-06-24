@@ -1,3 +1,5 @@
+//Copied from Stoycho Kyosev and refactored a little bit
+
 #pragma once
 
 class Random {
