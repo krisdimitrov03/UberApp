@@ -42,6 +42,5 @@
 - #### Change Address
 
 ## Suggestions for code improvement
-- ### Make more validations
-- ### Improve Hashing algorythm
-- ### 
+- Make more validations
+- Improve Hashing algorythm
