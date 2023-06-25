@@ -20,6 +20,8 @@
   - Stream operators
   - UI Manager
 
+> In this project I used Command Pattern and Singleton Pattern
+
 ## Functionalities
 ### Common
 - #### Log in
@@ -38,3 +40,8 @@
 - #### Finish Order
 - #### Accept Payment
 - #### Change Address
+
+## Suggestions for code improvement
+- ### Make more validations
+- ### Improve Hashing algorythm
+- ### 
