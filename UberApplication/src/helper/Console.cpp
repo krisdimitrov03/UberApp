@@ -6,11 +6,6 @@ void Console::read(String& dest)
     std::cin >> dest;
 }
 
-void Console::readLine(const String& dest)
-{
-
-}
-
 void Console::readKey()
 {
     std::cin.get();

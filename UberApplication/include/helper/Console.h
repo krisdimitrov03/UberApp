@@ -10,11 +10,13 @@ public:
 	template <typename Number>
 	static Number read();
 
-	static void readLine(const String& dest);
-
 	static void readKey();
 
 	static void write(const String& data);
+
+	template <typename T>
+	static void write(const T& data);
+
 	static void writeLine(const String& data = "");
 
 	static void clear();
@@ -28,4 +30,10 @@ Number Console::read() {
 	std::cin >> result;
 
 	return result;
+}
+
+template<typename T>
+inline void Console::write(const T& data)
+{
+	std::cout << data;
 }

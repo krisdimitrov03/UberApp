@@ -24,7 +24,7 @@ void MenuManager::runOrderedClientMenu(int option, bool& exit)
 		Console::write(" Order ID -> ");
 		String orderId;
 		Console::read(orderId);
-		
+
 		CommandFactory::getInstance()
 			.createCancelOrderCommand(orderId)
 			->execute();
@@ -167,13 +167,17 @@ void MenuManager::runDriverInOrderMenu(int option, bool& exit)
 {
 	switch (option) {
 	case 1: {
-		auto orders = OrderManager::getInstance().getOrders();
+		Console::clear();
+		Console::write(" New Address -> ");
+		String address;
+		Console::read(address);
+		Console::write(" Coordinates -> ");
+		int x = Console::read<int>();
+		int y = Console::read<int>();
 
-		for (size_t i = 0; i < orders.length(); i++)
-			Console::writeLine(orders[i].getId());
-
-		Console::readKey();
-		Console::readKey();
+		CommandFactory::getInstance()
+			.createChangeAddressCommand(address, { x, y })
+			->execute();
 		break;
 	}
 	case 2: {
@@ -187,9 +191,16 @@ void MenuManager::runDriverInOrderMenu(int option, bool& exit)
 
 		break;
 	}
-	case 3:
-		
+	case 3: {
+		Console::write(" Order ID -> ");
+		String orderId;
+		Console::read(orderId);
+
+		CommandFactory::getInstance()
+			.createAcceptPaymentCommand(orderId)
+			->execute();
 		break;
+	}
 	case 4:
 		CommandFactory::getInstance()
 			.createLogoutCommand()
@@ -205,6 +216,18 @@ void MenuManager::runDriverNotInOrderMenu(int option, bool& exit)
 {
 	switch (option) {
 	case 1:
+		Console::clear();
+		Console::write(" New Address -> ");
+		String address;
+		Console::read(address);
+		Console::write(" Coordinates -> ");
+		int x = Console::read<int>();
+		int y = Console::read<int>();
+
+		CommandFactory::getInstance()
+			.createChangeAddressCommand(address, { x, y })
+			->execute();
+		break;
 		break;
 	case 2:
 		Console::clear();

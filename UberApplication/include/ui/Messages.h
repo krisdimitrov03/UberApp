@@ -20,6 +20,8 @@ namespace error {
 	const char ORDER_CANCEL_FAIL[] = "Order could not be canceled.";
 	const char DRIVER_RATE_FAIL[] = "Driver could not be rated.";
 	const char ORDER_FINISH_FAIL[] = "Order could not be finished.";
+	const char PAYMENT_NOT_ACCEPTED[] = "Payment could not be accepted.";
+	const char ADDRESS_CHANGE_FAIL[] = "Address could not be changed.";
 }
 
 namespace success {
@@ -29,4 +31,6 @@ namespace success {
 	const char ORDER_CANCELED[] = "Order canceled.";
 	const char DRIVER_RATE_SUCCESSFUL[] = "Driver rated.";
 	const char ORDER_FINISHED[] = "Order finished.";
+	const char PAYMENT_ACCEPTED[] = "Payment accepted";
+	const char ADDRESS_CHANGED[] = "Address changed.";
 }

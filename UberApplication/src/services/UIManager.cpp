@@ -43,21 +43,21 @@ UIManager& UIManager::getInstance()
 	return instance;
 }
 
-void UIManager::printLandingPage(UserType type, const String& name, bool isInOrder)
+void UIManager::printLandingPage(UserType type, const String& name, bool isInOrder, double amount)
 {
 	switch (type) {
 	case UserType::Guest:
 		Console::write(GUEST_LANDING);
 		break;
 	case UserType::Client:
-		printGreetingPartial(name, type);
+		printGreetingPartial(name, type, amount);
 		if (!isInOrder)
 			Console::write(CLIENT_LANDING);
 		else
 			Console::write(ORDERED_CLIENT_LANDING);
 		break;
 	case UserType::Driver:
-		printGreetingPartial(name, type);
+		printGreetingPartial(name, type, amount);
 		if (!isInOrder)
 			Console::write(DRIVER_LANDING);
 		else
@@ -112,12 +112,14 @@ void UIManager::printTypePartial()
 	Console::write(TYPE_PARTIAL);
 }
 
-void UIManager::printGreetingPartial(const String& name, UserType type)
+void UIManager::printGreetingPartial(const String& name, UserType type, double amount)
 {
 	Console::write("\n Hello, ");
 	Console::write(name);
 	Console::write("! Welcome to Vega Taxi App! [");
-	Console::write(type == UserType::Client ? "Client]" : "Driver]");
+	Console::writeLine(type == UserType::Client ? "Client]" : "Driver]");
+	Console::write("Amount: €");
+	Console::write<double>(amount);
 }
 
 void UIManager::printExitMessage()

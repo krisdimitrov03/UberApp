@@ -56,12 +56,12 @@ void UberApp::run()
 	while (1) {
 		Console::clear();
 		UIManager::printLogo();
-		String name = UserManager::getInstance().getCurrentUserName();
 
 		UIManager::printLandingPage(
 			UserManager::getInstance().getCurrentUserType(),
 			UserManager::getInstance().getCurrentUserName(),
-			UserManager::getInstance().getCurrentUserIsInOrder()
+			UserManager::getInstance().getCurrentUserIsInOrder(),
+			UserManager::getInstance().getCurrentUserAmount()
 		);
 
 		char input = Console::read<char>();

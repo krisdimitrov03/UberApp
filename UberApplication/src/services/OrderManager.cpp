@@ -188,6 +188,9 @@ bool OrderManager::pay(const String& orderId, double amount)
 			.getClientById(clientId)
 			.removeMoney(amount);
 
+		UserManager::getInstance()
+			.removeFromCurrentUserAmount(amount);
+
 		return true;
 	}
 	catch (const std::exception&)
@@ -209,6 +212,20 @@ void OrderManager::acceptPayment(const String& orderId)
 	UserManager::getInstance()
 		.getDriverById(driverId)
 		.addMoney(orders[i].getMoney());
+
+	UserManager::getInstance()
+		.addToCurrentUserAmount(orders[i].getMoney());
+
+	UserManager::getInstance()
+		.getDriverById(driverId)
+		.setIsInOrder(false);
+
+	UserManager::getInstance()
+		.setCurrentUserIsInOrder(false);
+
+	UserManager::getInstance()
+		.getClientById(orders[i].getClientId())
+		.setIsInOrder(false);
 }
 
 void OrderManager::finishAll()

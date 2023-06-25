@@ -23,7 +23,7 @@ public:
 
 	static void printLogo();
 
-	static void printLandingPage(UserType type, const String& name = "", bool isInOrder = false);
+	static void printLandingPage(UserType type, const String& name = "", bool isInOrder = false, double amount = 0.00);
 
 	static void printLoginPage();
 
@@ -37,7 +37,7 @@ public:
 
 	static void printTypePartial();
 
-	static void printGreetingPartial(const String& name, UserType type);
+	static void printGreetingPartial(const String& name, UserType type, double amount);
 
 	static void printExitMessage();
 

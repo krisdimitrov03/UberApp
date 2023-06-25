@@ -31,6 +31,7 @@ bool UserManager::loginUser(const String& _username, const String& _password)
 			" " + client.getData().getLastName();
 		currentUser.type = UserType::Client;
 		currentUser.isInOrder = client.getData().getIsInOrder();
+		currentUser.amount = client.getData().getAccount();
 		return true;
 	}
 	else if (driver.hasValue()) {
@@ -40,6 +41,7 @@ bool UserManager::loginUser(const String& _username, const String& _password)
 			" " + driver.getData().getLastName();
 		currentUser.type = UserType::Driver;
 		currentUser.isInOrder = driver.getData().getIsInOrder();
+		currentUser.amount = driver.getData().getAccount();
 		return true;
 	}
 
@@ -131,6 +133,7 @@ const List<OrderMessageDto>& UserManager::getMessages() const
 void UserManager::addMoney(double amount)
 {
 	getClientById(currentUser.id).addMoney(amount);
+	addToCurrentUserAmount(amount);
 }
 
 void UserManager::rateDriver(const String& driverName, double rating)
@@ -228,9 +231,30 @@ bool UserManager::getCurrentUserIsLoggedIn() const
 	return currentUser.isLogged;
 }
 
+double UserManager::getCurrentUserAmount() const
+{
+	return currentUser.amount;
+}
+
 void UserManager::setCurrentUserIsInOrder(bool _data)
 {
 	currentUser.isInOrder = _data;
+}
+
+void UserManager::addToCurrentUserAmount(double data)
+{
+	if (data < 0)
+		throw std::exception("Amount cannot be less than 0.");
+
+	currentUser.amount += data;
+}
+
+void UserManager::removeFromCurrentUserAmount(double data)
+{
+	if (data > getCurrentUserAmount())
+		currentUser.amount = 0.00;
+
+	currentUser.amount -= data;
 }
 
 void UserManager::writeToBinaryFile(std::ofstream& file) const

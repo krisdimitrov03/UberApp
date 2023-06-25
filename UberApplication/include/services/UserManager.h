@@ -14,6 +14,7 @@ class UserManager : public IFileOperatable
 		UserType type = UserType::Guest;
 		bool isLogged = false;
 		bool isInOrder = false;
+		double amount = 0.00;
 	} currentUser;
 
 	List<Client> clients;
@@ -60,8 +61,11 @@ public:
 	const String& getCurrentUserId() const;
 	bool getCurrentUserIsInOrder() const;
 	bool getCurrentUserIsLoggedIn() const;
+	double getCurrentUserAmount() const;
 
 	void setCurrentUserIsInOrder(bool _data);
+	void addToCurrentUserAmount(double data);
+	void removeFromCurrentUserAmount(double data);
 
 	void writeToBinaryFile(std::ofstream& file) const override;
 	void readFromBinaryFile(std::ifstream& file) override;
