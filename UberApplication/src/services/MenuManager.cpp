@@ -173,7 +173,9 @@ void MenuManager::runDriverInOrderMenu(int option, bool& exit)
 		Console::read(address);
 		Console::write(" Coordinates -> ");
 		int x = Console::read<int>();
+		std::cin.ignore();
 		int y = Console::read<int>();
+		std::cin.ignore();
 
 		CommandFactory::getInstance()
 			.createChangeAddressCommand(address, { x, y })
