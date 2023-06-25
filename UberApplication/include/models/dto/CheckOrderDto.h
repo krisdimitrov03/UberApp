@@ -3,6 +3,7 @@
 
 struct CheckOrderDto
 {
+	String orderId;
 	String driverName;
 	String carNumber;
 	unsigned minutes;

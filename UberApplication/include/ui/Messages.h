@@ -15,10 +15,18 @@ namespace error {
 	const char FILE_NOT_OPENNING[] = "Logging file could not open.";
 
 	const char INVALID_PASSENGERS_COUNT[] = "Passengers must be a maximum of 3.";
+
+	const char ORDER_NOT_FINISHED[] = "You can pay only when order is finished.";
+	const char ORDER_CANCEL_FAIL[] = "Order could not be canceled.";
+	const char DRIVER_RATE_FAIL[] = "Driver could not be rated.";
+	const char ORDER_FINISH_FAIL[] = "Order could not be finished.";
 }
 
 namespace success {
 	const char REGISTERED[] = "Account created successfully.";
 	const char ORDER_SUCCESSFUL[] = "Order made. Searching for a taxi...";
 	const char DEPOSIT_SUCCESSFUL[] = "Deposit successful.";
+	const char ORDER_CANCELED[] = "Order canceled.";
+	const char DRIVER_RATE_SUCCESSFUL[] = "Driver rated.";
+	const char ORDER_FINISHED[] = "Order finished.";
 }

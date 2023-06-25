@@ -92,15 +92,19 @@ void UIManager::printCheckMessagesPage()
 }
 
 void UIManager::printOrderDetailsPage(const CheckOrderDto& details) {
-	if (details.driverName == "")
+	if (details.driverName == "") {
+		Console::writeLine("Order ID: " + details.orderId);
 		printMessage("*", "We are still searching a driver.");
-	else
+	}
+	else {
+		Console::writeLine("Order ID: " + details.orderId);
 		printMessage("*",
 			"Driver " +
 			details.driverName +
 			" will be with you in " +
 			Parser::intToString(details.minutes) +
 			" minutes.");
+	}
 }
 
 void UIManager::printTypePartial()

@@ -27,10 +27,9 @@ const char ORDERED_CLIENT_LANDING[] = R"(
    [1] Check order
    [2] Cancel order
    [3] Pay
-   [4] Rate trip
-   [5] Add money
-   [6] Log out
-   [7] Exit
+   [4] Add money
+   [5] Log out
+   [6] Exit
 
  Enter number: )";
 
@@ -49,7 +48,8 @@ const char DRIVER_IN_ORDER_LANDING[] = R"(
 
    [1] Change address
    [2] Finish order
-   [3] Log out
-   [4] Exit
+   [3] Accept payment
+   [4] Log out
+   [5] Exit
 
  Enter number: )";

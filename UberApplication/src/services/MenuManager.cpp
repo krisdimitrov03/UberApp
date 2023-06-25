@@ -12,24 +12,38 @@ void MenuManager::runOrderedClientMenu(int option, bool& exit)
 {
 	switch (option) {
 	case 1: {
+		Console::clear();
+
 		CommandFactory::getInstance()
 			.createCheckOrderCommand()
 			->execute();
 		break;
 	}
 	case 2: {
+		Console::clear();
+		Console::write(" Order ID -> ");
 		String orderId;
 		Console::read(orderId);
-
+		
 		CommandFactory::getInstance()
 			.createCancelOrderCommand(orderId)
 			->execute();
 		break;
 	}
 	case 3: {
+
+		Console::write(" Order ID -> ");
 		String orderId;
 		Console::read(orderId);
+
+		if (!OrderManager::getInstance().getById(orderId).getFinished()) {
+			UIManager::printErrorMessage(error::ORDER_NOT_FINISHED);
+			return;
+		}
+
+		Console::write(" Amount -> ");
 		double amount = Console::read<double>();
+		std::cin.ignore();
 
 		CommandFactory::getInstance()
 			.createPayCommand(orderId, amount)
@@ -37,30 +51,24 @@ void MenuManager::runOrderedClientMenu(int option, bool& exit)
 		break;
 	}
 	case 4: {
-		String driverName;
-		Console::read(driverName);
-		double rating = Console::read<double>();
+		Console::clear();
+		UIManager::printAddMoneyPage();
 
-		CommandFactory::getInstance()
-			.createRateCommand(driverName, rating)
-			->execute();
-		break;
-	}
-	case 5: {
 		double amount = Console::read<double>();
+		std::cin.ignore();
 
 		CommandFactory::getInstance()
 			.createAddMoneyCommand(amount)
 			->execute();
 		break;
 	}
-	case 6: {
+	case 5: {
 		CommandFactory::getInstance()
 			.createLogoutCommand()
 			->execute();
 		break;
 	}
-	case 7:
+	case 6:
 		exit = true;
 		return;
 	}
@@ -158,16 +166,36 @@ void MenuManager::runNotOrderedClientMenu(int option, bool& exit)
 void MenuManager::runDriverInOrderMenu(int option, bool& exit)
 {
 	switch (option) {
-	case 1:
+	case 1: {
+		auto orders = OrderManager::getInstance().getOrders();
+
+		for (size_t i = 0; i < orders.length(); i++)
+			Console::writeLine(orders[i].getId());
+
+		Console::readKey();
+		Console::readKey();
 		break;
-	case 2:
+	}
+	case 2: {
+		Console::write(" Order ID -> ");
+		String orderId;
+		Console::read(orderId);
+
+		CommandFactory::getInstance()
+			.createFinishOrderCommand(orderId)
+			->execute();
+
 		break;
+	}
 	case 3:
+		
+		break;
+	case 4:
 		CommandFactory::getInstance()
 			.createLogoutCommand()
 			->execute();
 		break;
-	case 4:
+	case 5:
 		exit = true;
 		return;
 	}

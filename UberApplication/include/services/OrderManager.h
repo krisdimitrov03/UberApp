@@ -17,6 +17,7 @@ public:
 	static OrderManager& getInstance();
 
 	List<Order>& getOrders();
+	Order& getById(const String& id);
 
 	void makeOrder(const Address& _address, const Address& _destination, unsigned _passengersCount);
 	CheckOrderDto checkOrder() const;

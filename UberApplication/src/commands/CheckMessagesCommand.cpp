@@ -12,6 +12,13 @@ void CheckMessagesCommand::execute() const
 	const List<OrderMessageDto>& messages = UserManager::getInstance()
 		.getMessages();
 
+	if (messages.length() == 0) {
+		Console::writeLine("You have no new messages.");
+		Console::writeLine("Press <Enter> to continue...");
+		Console::readKey();
+		return;
+	}
+
 	Console::writeLine(
 		"You have " +
 		Parser::intToString(messages.length()) +

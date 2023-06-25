@@ -64,11 +64,24 @@ String& String::operator=(const String& other)
 }
 
 void String::move(String&& other) {
-	_data = other._data;
+	/*_data = other._data;
 	_size = other._size;
 
 	if (!other.isSso())
 	{
+		other._data = nullptr;
+		notUsingSso();
+	}*/
+	if (other.isSso()) {
+		strcpy(ssoData, other.ssoData);
+		ssoData[String::SSO_MAX_SIZE] = String::SSO_MAX_SIZE - strlen(ssoData);
+
+		for (size_t i = 0; i <= String::SSO_MAX_SIZE; i++)
+			other.ssoData[i] = '\0';
+	}
+	else {
+		_data = other._data;
+		_size = other._size;
 		other._data = nullptr;
 		notUsingSso();
 	}
@@ -192,16 +205,16 @@ std::istream& operator>>(std::istream& is, String& str)
 	char buff[1024];
 	is.getline(buff, 1024);
 	size_t length = strlen(buff);
-	/*str.free();*/
 
-	if (length >= sizeof(str.ssoData)) {
+	if (length >= String::SSO_MAX_SIZE) {
 		str._size = length;
 		str._data = new char[length + 1]{ '\0' };
 		strcpy(str._data, buff);
+		str.notUsingSso();
 	}
 	else {
-		strcpy(str.ssoData, buff);
 		str[String::SSO_MAX_SIZE] = String::SSO_MAX_SIZE - length;
+		strcpy(str.ssoData, buff);
 	}
 
 	return is;

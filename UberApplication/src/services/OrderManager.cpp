@@ -13,6 +13,16 @@ List<Order>& OrderManager::getOrders()
 	return orders;
 }
 
+Order& OrderManager::getById(const String& id)
+{
+	for (size_t i = 0; i < orders.length(); i++)
+		if (orders[i].getId() == id)
+			return orders[i];
+
+	Order res;
+	return res;
+}
+
 void OrderManager::makeOrder(const Address& _address, const Address& _destination, unsigned _passengersCount)
 {
 	if (UserManager::getInstance().getCurrentUserIsInOrder())
@@ -66,12 +76,13 @@ CheckOrderDto OrderManager::checkOrder() const
 	const String& driverId = order.getData().getDriverId();
 
 	if (driverId == "")
-		return { "", "", 0 };
+		return { order.getData().getId(), "", "", 0};
 
 	const Driver& driver = UserManager::getInstance()
 		.getDriverById(order.getData().getDriverId());
 
 	return {
+		order.getData().getId(),
 		driver.getFirstName() + " " + driver.getLastName(),
 		driver.getCarNumber(),
 		order.getData().getMinutes()
@@ -89,6 +100,13 @@ void OrderManager::acceptOrder(const String& id, unsigned minutes)
 		{
 			orders[i].setDriverId(driverId);
 			orders[i].setMinutes(minutes);
+
+			UserManager::getInstance()
+				.setCurrentUserIsInOrder(true);
+
+			UserManager::getInstance()
+				.getDriverById(driverId)
+				.setIsInOrder(true);
 
 			List<Driver> drivers = UserManager::getInstance()
 				.getDrivers();

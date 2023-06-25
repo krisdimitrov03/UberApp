@@ -18,7 +18,6 @@ class String : IFileOperatable
 		char ssoData[String::SSO_MAX_SIZE + 1]{ '\0' };
 	};
 
-	bool isSso() const;
 	void move(String&& other);
 	void copyFrom(const String& other);
 	void free();
@@ -27,6 +26,7 @@ class String : IFileOperatable
 
 	void notUsingSso();
 public:
+	bool isSso() const;
 
 	String();
 	String(const char* data);
