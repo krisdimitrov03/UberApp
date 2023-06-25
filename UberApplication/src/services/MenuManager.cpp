@@ -215,7 +215,7 @@ void MenuManager::runDriverInOrderMenu(int option, bool& exit)
 void MenuManager::runDriverNotInOrderMenu(int option, bool& exit)
 {
 	switch (option) {
-	case 1:
+	case 1: {
 		Console::clear();
 		Console::write(" New Address -> ");
 		String address;
@@ -228,7 +228,7 @@ void MenuManager::runDriverNotInOrderMenu(int option, bool& exit)
 			.createChangeAddressCommand(address, { x, y })
 			->execute();
 		break;
-		break;
+	}
 	case 2:
 		Console::clear();
 		UIManager::printCheckMessagesPage();
