@@ -41,6 +41,8 @@
 - #### Accept Payment
 - #### Change Address
 
+> **NOTE!** If you change the information in the 'db.dat' and 'random.dat' files manually, it will cause the app to work unpropperly.
+
 ## Suggestions for code improvement
 - Make more validations
 - Improve Hashing algorythm
