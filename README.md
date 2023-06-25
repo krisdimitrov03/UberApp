@@ -26,4 +26,10 @@
 - #### Register
 - #### Log out
 ### Client
+- #### Make Order
+- #### Check Order
+- #### Add Funds
+- #### Cancel Order
+- #### Pay
+- #### Rate Driver
 ### Driver
